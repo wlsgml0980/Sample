@@ -10,6 +10,6 @@
  <h1>Home</h1>
 
 </div>    
-
+<!-- 수정이력남기기 -->
     
 <%@include file="include/footer.jsp" %>
