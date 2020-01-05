@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- Application Loggers -->
+	<logger name="com.sample.controller">
+		<level value="info" />
+	</logger>
+	
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.beans">
+		<level value="info" />
+	</logger>
+	
+	<logger name="org.springframework.context">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="info" />
+	</logger>
+
+	<!--  
+	 DEBUG 
+	 debug을 위한 용도로, 일반 정보를 상세하게 출력합니다.
+	
+	 INFO
+	 일반적인 데이터를 출력합니다.
+	
+	 WARN
+	 경고성 메시지로, 에러가 아닌 처리 가능한 문제를 출력 합니다.
+	
+	 ERROR
+	 일반적인 에러로 처리가 반드시 필요로 하는 문제를 출력 합니다.
+	
+	 FATAL
+	 시스템에 심각한 문제를 일이킬 수 있는 문제를 출력합니다. -->
+	<!-- SQL Logger -->
+	<logger name="jdbc.sqltiming" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="console"/> 
+	</logger>
+
+	<logger name="jdbc.sqlonly" additivity="false"> 
+		<level value="info"/> 
+		<appender-ref ref="console"/> 
+	</logger>
+
+	<logger name="jdbc.audit" additivity="false"> 
+		<level value="warn"/>  
+		<appender-ref ref="console"/> 
+	</logger> 
+
+	<logger name="jdbc.resultset" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="console"/> 
+	</logger>
+
+	<logger name="jdbc.resultsettable" additivity="false"> 
+		<level value="info"/>  
+		<appender-ref ref="console"/> 
+	</logger> 
+
+
+	<!-- Root Logger -->
+	<root>
+		<priority value="warn" />
+		<appender-ref ref="console" />
+	</root>
+
+	
+</log4j:configuration>

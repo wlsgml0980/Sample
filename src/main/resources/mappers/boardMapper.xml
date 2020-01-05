@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+ <!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+ <!-- 
+	MyBatis는 기본적으로 PreparedStatement를 이용해서 처리됨.
+	개발자가 PreparedStatement에 들어가는 파라미터를 사용할 때는 '#{}'기호를 이용해서 처리함.
+	'#{}'의 규칙.
+		1. 파라미터가 여러 속성을 가진 객체인 경우 '#{num}'은 getNum() or setNum()을 의미함.
+		2. 파라미터가 하나이고, 기본자료형이나 문자열인 경우 값이 그대로 전달됨.
+		3. 파라미터가 Map타입인 경우 '#{num}'은 Map객체의 키값이 'num'인 값을 찾는다.
+-->  
+
+<!-- 
+	패키지익스플로러에서 프로젝트 경로구조와 상관없이 개발자가 mapper태그의 namespace 속성값을
+	지정한 것이 프로젝트에서 통용되는 경로명으로 인식됨.
+-->
+<mapper namespace="com.sample.mapper.BoardMapper">
+
+
+<insert id="insert">
+	insert into board (no, title, content) 
+	values(board_seq.nextVal, #{title},#{content})
+</insert>
+
+<!-- mybatis-config.xml::typeAlias 적용후 --> 
+<select id="read" resultType="BoardVO"> 
+	 select 
+	   no, title, content, day, hit 
+	 from 
+	   board 
+	 where no = #{no}
+ </select>
+
+ <update id="update">
+	 update board set title =#{title}, content =#{content} 
+	 where no = #{no}
+ </update>
+ 
+ 
+ <update id="updateHit">
+	 update board set hit = hit + 1 
+	 where no = #{no}
+ </update>
+
+ <delete id="delete">
+ 	delete from board where no = #{no}
+ </delete>
+    
+ <select id="listAll" resultType="com.sample.vo.BoardVO">
+	 <![CDATA[
+	 select 
+	   no, title, content, day, hit 
+	 from 
+	   board 
+	 where no > 0 
+	 order by no desc, day desc
+	 ]]>  
+ </select>    
+  
+</mapper>
+
