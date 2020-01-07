@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sample.mapper.ReplyMapper">
+
+	<select id="selectReplies" resultType="ReplyVO">
+	  SELECT no, content, day, board_no
+		FROM board_commend
+	   WHERE board_No  =#{board_No}
+	   ORDER BY no DESC
+	</select>
+
+	<insert id="insertReply">
+		INSERT INTO board_commend (no, content, board_no)
+		VALUES (board_commend_seq.nextVal,#{content}, #{no})
+	</insert>
+
+	<update id="updateReply">
+		update board_commend 
+		   set content = #{content},
+			   day = SYSDATE
+		 where no = #{no}
+	</update>
+
+	<delete id="deleteReply">
+		delete from board_commend 
+		 where no =#{no}
+	</delete>
+
+	
+	<select id="countReplies" resultType="int">
+		select count(no) 
+		  from board_commend 
+		 where board_No = #{board_No}
+	</select>
+
+
+</mapper>  

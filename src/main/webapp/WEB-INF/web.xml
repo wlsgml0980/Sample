@@ -20,6 +20,42 @@
     <servlet-name>appServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+  
+  
+  <!-- 
+		...GET/POST 방식만 지원하는 브라우저의 경우를 대비하기 위해 HiddenHttpMethodFilter를
+		...web.xml에 필터 설정을 추가함. 
+		...브라우저에서 POST 방식으로 전송하고, 추가적인 정보를 이용해서 PUT, PATCH, DELETE와 같은
+		...정보를 추가로 전송하는 Overloaded POST 방식을 사용함.
+		
+		...Ajax코드에서 'X-HTTP-Method-Override' 정보에 해당함.
+		
+		...Form 태그를 이용해서 데이터를 전송하는 경우, POST방식으로 전송하되,
+		...'_method'라는 추가적인 정보를 이용함.
+		...HiddenHttpMethodFilter는 
+		...form태그 내에서 
+		...input type='hidden' name="_method" value='PUT' 과 같은 형태로 사용해서
+		...GET/POST방식만을 지원하는 브라우저에서 REST방식을 사용하도록 설정함.
+		...POST + _method value = 'put'    : PUT방식.
+		...POST + _method value = 'delete' : DELETE방식.
+		...추가적인 데이터로 '_method'를 붙이는 이런 처리를 할 수 있도록 
+		...스프링에서는 HiddenHttpMethodFilter를 제공하는데, 웹 애플리케이션 내에서 Filter로 설정함.
+		...테스트는 POST방식으로 진행하고, '_method'를 추가한 상태에서 진행함.
+	-->
+	
+	<filter>
+		<filter-name>hiddenHttpMethodFilter</filter-name>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>hiddenHttpMethodFilter</filter-name>
+		<url-pattern>/</url-pattern>
+	</filter-mapping>
+  
+  
+  
+  
+  
   <filter>
     <filter-name>encoding</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

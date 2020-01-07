@@ -8,7 +8,7 @@
 <div>
 
  <h1>Home</h1>
-
+ <a href="/sample/board/listAll"> 목록보기 </a>
 </div>    
 <!-- 수정이력남기기 -->
     
