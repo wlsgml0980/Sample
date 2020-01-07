@@ -28,13 +28,13 @@
 		console.log(formObj);
 		
 		$(".btn-insert").on("click", function(){
-			formObj.attr("action", "/sample/board/insert");
+			formObj.attr("action", "/cloud/board/insert");
 			formObj.submit();
 		});
 
 		
 		$(".btn-primary").on("click", function(){
-			self.location = "/sample/board/listAll";
+			self.location = "/cloud/board/listAll";
 		});
 		
 	});

@@ -24,7 +24,7 @@
 
 	<tr>
 		<td style="width:50px" align="center"> ${boardVO.no}</td>
-		<td style="width:250px"><a href='/sample/board/read?no=${boardVO.no}'>${boardVO.title}</a></td>
+		<td style="width:250px"><a href='/cloud/board/read?no=${boardVO.no}'>${boardVO.title}</a></td>
 		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.day}" /></td>
 		<td style="width:50px" align="center"><span>${boardVO.hit }</span></td>
 	</tr>
@@ -35,7 +35,7 @@
 
 
 <div align="left">
-	<a href='/sample/board/insert'>글쓰기</a>
+	<a href='/cloud/board/insert'>글쓰기</a>
 </div>
 			
 

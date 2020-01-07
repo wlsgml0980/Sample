@@ -8,7 +8,7 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     
     <!-- jQuery 2.1.4 -->
-    <script src="/sample/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="/cloud/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     
   </head>
   

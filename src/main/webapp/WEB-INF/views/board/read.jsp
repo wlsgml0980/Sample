@@ -45,17 +45,17 @@
 		console.log(formObj);
 		
 		$(".btn-warning").on("click", function(){
-			formObj.attr("action", "/sample/board/update");
+			formObj.attr("action", "/cloud/board/update");
 			formObj.submit();
 		});
 
 		$(".btn-danger").on("click", function(){
-			formObj.attr("action", "/sample/board/delete");
+			formObj.attr("action", "/cloud/board/delete");
 			formObj.submit();
 		});
 		
 		$(".btn-primary").on("click", function(){
-			self.location = "/sample/board/listAll";
+			self.location = "/cloud/board/listAll";
 		});
 		
 		
@@ -68,7 +68,7 @@
 			  $.ajax({
 				  	
 				  type : 'post',
-					url : '/sample/replies',
+					url : '/cloud/replies',
 					headers : {
 						"Content-Type" : "application/json",
 						"X-HTTP-Method-Override" : "POST"
@@ -100,7 +100,7 @@ function selectReply(no){
 	var str;
 	
 	$.getJSON(
-			"/sample/replies/all/" + no,
+			"/cloud/replies/all/" + no,
 			
 			function(data) {	
 				
