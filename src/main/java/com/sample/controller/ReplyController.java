@@ -42,7 +42,7 @@ import com.sample.vo.ReplyVO;
  *  ...화면처리에 개발이 집중이 됨.
  *  ...앱에서는 HTTP 방식으로 데이터를 주고받는 라이브러리등을 활용해서 처리함.
  *  ...웹에서는 Ajax를 이용해서 처리함.
- *  -- 태호 추가  
+ *  -- 태호 추가   
  */
 @RestController
 @RequestMapping("/replies")
